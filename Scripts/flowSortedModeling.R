@@ -18,7 +18,7 @@ library(doParallel)
 
 
 ## load in flow-sorted gene expression data, metadata, Z matrix, and kinship matrix
-load('~/Desktop/flowSortedData.RData')
+load('./Data/flowSortedData.RData')
 
 ## Voom normalize and remove group ('batch') effects using limma:
 residuals=lapply(names(info_cell),function(x){
