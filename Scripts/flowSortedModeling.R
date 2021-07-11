@@ -146,11 +146,11 @@ cellsort.Perm <- function(behaveVar){
       tmp=parApply(clus,residuals[[cell]],1,function(y){
         .libPaths( c("/data/tunglab/nds/Rlibs/", .libPaths() ) )
         library(EMMREML)
-        design=model.matrix(~behaveVar_perm+info_cell[[cell]]$age) ## if permuting age or weight, adjust the design matrix accordingly.
+        design=model.matrix(~behaveVar_perm+info_cell[[cell]]$age) 
         K=as.matrix(kin_per_cell[[cell]])
         Z=as.matrix(Z_matrix[[cell]])
         emma=emmreml(y=y,X=design,Z=as.matrix(Z),K=as.matrix(K),varbetahat=T,varuhat=T,PEVuhat=T,test=T)
-        return(emma$pvalbeta[,"none"])}) ## store p-values: column 1 = intercept_pvalue, column 2 = permuted_rank_pvalue, column 3 = age_pvalue
+        return(emma$pvalbeta[,"none"])}) 
       print(sim)
       if (sim==1) final=t(tmp)
       else final=rbind(final,t(tmp))
