@@ -10,8 +10,6 @@ library(EMMREML)
 library(data.table)
 library(cobs)
 
-
-
 ## Load input files: reads, metadata and kinship matrixes in three data.frames (reads, cols, K, respectively)
 load('./Data/lpsData.R')
 
@@ -45,8 +43,6 @@ behaviorList <- c('Elo',
                   "gc.overall.agg.given",
                   "gc.agg.Diff")
 
-
-#title="aggDiff"
 model_lps <- function(behaveVar){
   design = model.matrix(~Condition+Condition:cols[,behaveVar]+Condition:Age+Condition:PC1+Condition:PC2,data=cols)
   
