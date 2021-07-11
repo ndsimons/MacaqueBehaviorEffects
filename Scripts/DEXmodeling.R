@@ -125,6 +125,8 @@ ca.perm <- function(behaveVar){
       shuffled_pvals_DEX <- cbind(shuffled_pvals_DEX,x=res_null[,"p_value_ca_random$trtdexamethasone:ca_random[, behaveVar]"])
     }
   }
+  return(shuffled_pvals_NC)
+  return(shuffled_pvals_DEX)
 }
 
 
@@ -225,6 +227,8 @@ ge.perm <- function(behaveVar){
       shuffled_pvals_DEX <- cbind(shuffled_pvals_DEX,x=res_null[,"p_value_ge_random$trtdex:ge_random[, behaveVar]"])
     }
   }
+  return(shuffled_pvals_NC)
+  return(shuffled_pvals_DEX)
 }
 
 
@@ -305,7 +309,9 @@ ge_delta.perm <- function(behaveVar){
     } else {
       shuffled_pvals_ge_delta <- cbind(shuffled_pvals_ge_delta,x=res_null[,"p_value_randVar"])
     }
-  }}
+  }
+  return(shuffled_pvals_ge_delta)
+}
   
 
 for (i in behaviorList){
