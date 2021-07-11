@@ -74,7 +74,7 @@ for (i in behaviorList){
 }
 
 #### DEX CA permutations ####
-## highly recommend running prmutations on a compute cluster
+## highly recommend running permutations on a compute cluster
 
 # Declare flag variable (1 at the first entry per animal, 0 in the rest, instrumental for reshuffling)
 ca_info$flag <- rep(c(1,0), times=43)
@@ -174,7 +174,7 @@ for (i in behaviorList){
 }
 
 #### DEX GE permutations ####
-## highly recommend running prmutations on a compute cluster
+## highly recommend running permutations on a compute cluster
 
 # Declare flag variable (1 at the first entry per animal, 0 in the rest, instrumental for reshuffling)
 ca_info$flag <- rep(c(1,0), times=43)
@@ -275,10 +275,10 @@ for (i in behaviorList){
 }
 
 #### DEX GE delta  permutations ####
-## highly recommend running prmutations on a compute cluster
+## highly recommend running permutations on a compute cluster
 
 
-iters = 2
+iters = 100
 ge_delta.perm <- function(behaveVar){
   ge_random<-ge_info_delta
   for(iter in 1:iters)
