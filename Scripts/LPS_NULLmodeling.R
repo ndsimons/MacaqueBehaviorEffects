@@ -124,16 +124,18 @@ lps.perm <- function(behaveVar){
     #we register p-values of the associations to Elo at NC and LPS alone.
     if(iter==1)
     {
-      shuffled_aggDiff_pvals_NC <-data.frame(x=res_null[,"p_value_ConditionNC:cols_random[, behaveVar]"])
-      shuffled_aggDiff_pvals_LPS <-data.frame(x=res_null[,"p_value_ConditionLPS:cols_random[, behaveVar]"])
+      shuffled_pvals_NC <-data.frame(x=res_null[,"p_value_ConditionNC:cols_random[, behaveVar]"])
+      shuffled_pvals_LPS <-data.frame(x=res_null[,"p_value_ConditionLPS:cols_random[, behaveVar]"])
       
-      rownames(shuffled_aggDiff_pvals_NC)=rownames(res_null)
-      rownames(shuffled_aggDiff_pvals_LPS)=rownames(res_null)
+      rownames(shuffled_pvals_NC)=rownames(res_null)
+      rownames(shuffled_pvals_LPS)=rownames(res_null)
     } else {
-      shuffled_aggDiff_pvals_NC <- cbind(shuffled_aggDiff_pvals_NC,x=res_null[,"p_value_ConditionNC:cols_random[, behaveVar]"])
-      shuffled_aggDiff_pvals_LPS <- cbind(shuffled_aggDiff_pvals_LPS,x=res_null[,"p_value_ConditionLPS:cols_random[, behaveVar]"])
+      shuffled_pvals_NC <- cbind(shuffled_pvals_NC,x=res_null[,"p_value_ConditionNC:cols_random[, behaveVar]"])
+      shuffled_pvals_LPS <- cbind(shuffled_pvals_LPS,x=res_null[,"p_value_ConditionLPS:cols_random[, behaveVar]"])
     }
   }
+  return(shuffled_pvals_NC)
+  return(shuffled_pvals_LPS)
 }
 
 for (i in behaviorList){
