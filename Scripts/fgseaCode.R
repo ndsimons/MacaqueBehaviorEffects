@@ -11,7 +11,7 @@ library(cowplot)
 library(tidyverse)
 
 ## load data and pathways
-pathways.hallmark <- gmtPathways("./Data/h.all.v7.2.symbols.gmt")
+pathways.hallmark <- gmtPathways('./Data/h.all.v7.2.symbols.gmt')
 load('./Data/fgseaData.RData')
 
 ## preprocess data for fgsea function
