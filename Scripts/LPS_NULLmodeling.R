@@ -15,18 +15,28 @@ load('./Data/lpsData.RData')
 
 #### Run linear model: (nested in LPS+ and LPS-) ####
 
-#Get dge object
+## Define matrix Z describing the sample-to-individual mapping
+  Z=matrix(rep(0,nrow(cols)*ncol(K)),nrow=nrow(cols),ncol=ncol(K))
+  rownames(Z)=rownames(cols)
+  colnames(Z)=colnames(K)
+  for(i in 1:ncol(Z))
+  {
+    set=which(cols$Animal == colnames(Z)[i])
+    Z[set,i]=1
+  }
+
+## Get dge object
 dge <- DGEList(counts=reads)
 dge <- calcNormFactors(dge)
 
-#Remove group effects using limma and extract residuals.
+## Remove group effects using limma and extract residuals.
 design = model.matrix(~0+Group,data=cols)
 v <- voom(dge,design,plot=FALSE)
 fit <-lmFit(v,design)
 fit <- eBayes(fit)
 exp<-residuals.MArrayLM(object=fit, v)
 
-#order genes alphabetically to ensure a criterium for ordering rows all the time.
+## order genes alphabetically to ensure a criterium for ordering rows all the time.
 exp=exp[order(rownames(exp)),]
 
 behaviorList <- c('Elo',
@@ -55,16 +65,6 @@ model_lps <- function(behaveVar){
   #Declare object random_effects to store in it the individual-wise u random effects
   random_effects=exp[,1:length(levels(cols$Animal))]
   colnames(random_effects)=levels(cols$Animal)
-  
-  #Define matrix Z describing the sample-to-individual mapping
-  Z=matrix(rep(0,nrow(cols)*ncol(K)),nrow=nrow(cols),ncol=ncol(K))
-  rownames(Z)=rownames(cols)
-  colnames(Z)=colnames(K)
-  for(i in 1:ncol(Z))
-  {
-    set=which(cols$Animal == colnames(Z)[i])
-    Z[set,i]=1
-  }
   
   #Fit a model for each gene using emmreml
   for(i in 1:nrow(exp))
