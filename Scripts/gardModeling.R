@@ -13,7 +13,7 @@ library(cobs)
 
 
 ## load GARD data, metadata, kinship matrix, and Z matrix
-load(./Data/gardData.RData')
+load('./Data/gardData.RData')
 
 ## Use limma to remove technical effects associated with the group 
 design <- model.matrix(~Gard_metadata$Group)
