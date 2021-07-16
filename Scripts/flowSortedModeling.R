@@ -174,7 +174,7 @@ for (i in behaviorList){
 # iterate through each behavior and calculate the fdrs and return object with fdrs added in
 for (i in behaviorList){
   print(i)
-  tmp <- paste(i,'_modelRes',sep='')
+  tmp <- paste(i,'_modelResAIC',sep='')
   res <- get(tmp)
   tmp <- paste(i,'_perms',sep='')
   perms <- get(tmp)
@@ -182,5 +182,5 @@ for (i in behaviorList){
     res[[n]] <- perm.fdr(res[[n]],perms[[n]][,2],'pval_behaveVar','behaveVar')
   }
   saveRDS(res, file=paste0(i,'_FDR.rds'))
-  assign(value=res, x=paste(i,'_modelRes_FDR',sep=''))
+  assign(value=res, x=paste(i,'_modelResAIC_FDR',sep=''))
 }
