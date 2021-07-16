@@ -24,7 +24,7 @@ resid_RNA=apply(residuals.MArrayLM(object=fit, voom_Gard),2,function(x){x+interc
 rm(design); rm(fit); rm(intercepts)
 
 #### Run gard models ####
-behaviorList <- c('Elo_phase_1',
+behaviorList <- c('Elo',
                   'PC1.agg',
                   'PC1.groom',
                   "gc.noncontact.agg.rec",
