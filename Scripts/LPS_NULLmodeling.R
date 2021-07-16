@@ -11,7 +11,7 @@ library(data.table)
 library(cobs)
 
 ## Load input files: reads, metadata and kinship matrixes in three data.frames (reads, cols, K, respectively)
-load('./Data/lpsData.R')
+load('./Data/lpsData.RData')
 
 #### Run linear model: (nested in LPS+ and LPS-) ####
 
