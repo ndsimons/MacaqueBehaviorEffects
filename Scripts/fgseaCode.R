@@ -83,33 +83,6 @@ fgseaRes_CD4_elo <- fgsea(pathways = pathways.hallmark,
                           stats = CD4_elo_GSEAgenelist2,
                           eps = 0.0)
 
-
-fgseaResTidyCD4_agAsym <- fgseaRes_CD4_agAsym %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-fgseaResTidyCD4_elo <- fgseaRes_CD4_elo %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-p1 <- ggplot(fgseaResTidyCD4_elo, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD4 [Elo]") + 
-  theme_minimal()
-
-p2 <- ggplot(fgseaResTidyCD4_agAsym, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD4 [Agonism asymmetry]") + 
-  theme_minimal()
-
-plot_grid(p1,p2,ncol = 2)
-
 fgseaRes_CD8_agAsym <- fgsea(pathways = pathways.hallmark,
                              stats = CD8_agAsym_GSEAgenelist2,
                              eps = 0.0)
@@ -117,33 +90,6 @@ fgseaRes_CD8_agAsym <- fgsea(pathways = pathways.hallmark,
 fgseaRes_CD8_elo <- fgsea(pathways = pathways.hallmark,
                           stats = CD8_elo_GSEAgenelist2,
                           eps = 0.0)
-
-
-fgseaResTidyCD8_agAsym <- fgseaRes_CD8_agAsym %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-fgseaResTidyCD8_elo <- fgseaRes_CD8_elo %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-p1 <- ggplot(fgseaResTidyCD8_elo, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD8 [Elo]") + 
-  theme_minimal()
-
-p2 <- ggplot(fgseaResTidyCD8_agAsym, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD8 [Agonism asymmetry]") + 
-  theme_minimal()
-
-plot_grid(p1,p2,ncol = 2)
 
 fgseaRes_CD16_agAsym <- fgsea(pathways = pathways.hallmark,
                               stats = CD16_agAsym_GSEAgenelist2,
@@ -153,34 +99,6 @@ fgseaRes_CD16_elo <- fgsea(pathways = pathways.hallmark,
                            stats = CD16_elo_GSEAgenelist2,
                            eps = 0.0)
 
-
-fgseaResTidyCD16_agAsym <- fgseaRes_CD16_agAsym %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-fgseaResTidyCD16_elo <- fgseaRes_CD16_elo %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-p1 <- ggplot(fgseaResTidyCD16_elo, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD16 [Elo]") + 
-  theme_minimal()
-
-p2 <- ggplot(fgseaResTidyCD16_agAsym, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD16 [Agonism asymmetry]") + 
-  theme_minimal()
-
-plot_grid(p1,p2,ncol = 2)
-
-
 fgseaRes_CD20_agAsym <- fgsea(pathways = pathways.hallmark,
                               stats = CD20_agAsym_GSEAgenelist2,
                               eps = 0.0)
@@ -188,32 +106,4 @@ fgseaRes_CD20_agAsym <- fgsea(pathways = pathways.hallmark,
 fgseaRes_CD20_elo <- fgsea(pathways = pathways.hallmark,
                            stats = CD20_elo_GSEAgenelist2,
                            eps = 0.0,
-                           minSize  = 0,
-                           maxSize  = 500)
-
-
-fgseaResTidyCD20_agAsym <- fgseaRes_CD20_agAsym %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-fgseaResTidyCD20_elo <- fgseaRes_CD20_elo %>%
-  as_tibble() %>%
-  mutate(pathway = gsub("HALLMARK_", "", pathway)) %>% 
-  arrange(desc(NES))
-
-p1 <- ggplot(fgseaResTidyCD20_elo, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD20 [Elo]") + 
-  theme_minimal()
-
-p2 <- ggplot(fgseaResTidyCD20_agAsym, aes(reorder(pathway, NES), NES)) +
-  geom_col(aes(fill=padj<0.05)) +
-  coord_flip() +
-  labs(x="Pathway", y="Normalized Enrichment Score",
-       title="CD20 [Agonism asymmetry]") + 
-  theme_minimal()
-
-plot_grid(p1,p2,ncol = 2)
+                           minSize  = 0)
