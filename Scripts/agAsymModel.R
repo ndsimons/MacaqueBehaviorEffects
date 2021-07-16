@@ -76,7 +76,6 @@ cellsort.Perm <- function(behaveVar){
       clusterExport(clus,c("residuals","info_cell","Z_matrix","kin_per_cell"))
       behaveVar_perm=sample(info_cell[[cell]][,behaveVar])
       tmp=parApply(clus,residuals[[cell]],1,function(y){
-        .libPaths( c("/data/tunglab/nds/Rlibs/", .libPaths() ) )
         library(EMMREML)
         design=model.matrix(~behaveVar_perm+info_cell[[cell]]$age) 
         K=as.matrix(kin_per_cell[[cell]])
