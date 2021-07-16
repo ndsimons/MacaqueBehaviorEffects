@@ -25,3 +25,6 @@ for (i in behaviorList){
   tmpBehavior <- mtDNA_metadata[,i]
   mtDNA_modelResults[i,5] <- AIC(lmer(logCN ~ tmpBehavior + cell + age + (1|batch), data = mtDNA_metadata, na.action = na.omit))
 }
+
+# get null AIC
+AIC(lmer(logCN ~ cell + age + (1|batch), data = mtDNA_metadata, na.action = na.omit))
