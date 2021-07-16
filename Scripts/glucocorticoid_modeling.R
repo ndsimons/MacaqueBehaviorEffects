@@ -6,7 +6,7 @@ library(lmerTest)
 
 ## read in cortisol data and metadata
 cort_data <- read.table('/.Data/CortData.txt', header =T)
-cort_metadata <- read.table('/.Data/cort_metadata.txt', header =T)
+cort_metadata <- read.table('./Data/cort_metadata', header =T)
 
 ## assign list of behavioral variables
 behaviorList <- c('scaledElo',
