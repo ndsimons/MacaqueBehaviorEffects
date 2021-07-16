@@ -62,7 +62,7 @@ cort_metadata_sub$control_dst <- c(cort_data$X1100_P1)
 cort_metadata_sub$control_dst_dex <- c(cort_data$p1_dex_dst)
 cort_metadata_sub$control_dct_dex_1.5 <- c(cort_data$p1_dex_1.5)
 cort_metadata_sub$control_dct_dex_4.5 <- c(cort_data$p1_dex_4.5)
-
+tmp_metadata <- cort_metadata_sub
 cort_slope_resMatrix <- matrix(nrow = 14, ncol = 5)
 rownames(cort_slope_resMatrix)[1:14] <- behaviorList
 colnames(cort_slope_resMatrix) <- c('beta','SE(beta)','t','p','AIC')
