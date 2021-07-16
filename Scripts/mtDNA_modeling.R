@@ -27,4 +27,4 @@ for (i in behaviorList){
 }
 
 # get null AIC
-AIC(lmer(logCN ~ cell + age + (1|batch), data = mtDNA_metadata, na.action = na.omit))
+mtDNA_modelResults[14,5] <- AIC(lmer(logCN ~ cell + age + (1|batch), data = mtDNA_metadata, na.action = na.omit))
